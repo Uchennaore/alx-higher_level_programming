@@ -1,50 +1,66 @@
 #!/usr/bin/python3
-"""Module that contains a function to divide a matrix by a scalar"""
+"""
+This module multiplies 2 matrix
+Raises ValueError TypeError
+"""
 
 
 def matrix_mul(m_a, m_b):
-    """Multiplies two matrices"""
+    """
+    function to multiply 2 matrix
+    """
+    listErr = "{} must be a list"
+    emptyErr = "{} can't be empty"
+    typeErr = "{} should contain only integers or floats"
+    sizeErr = "each row of {} must should be of the same size"
+
     if type(m_a) is not list:
-        raise TypeError("m_a must be a list")
+        raise TypeError(listErr.format('m_a'))
     if type(m_b) is not list:
-        raise TypeError("m_b must be a list")
+        raise TypeError(listErr.format('m_b'))
+
+    if len(m_a) == 0 or type(m_a[0]) is list and len(m_a[0]) == 0:
+        raise ValueError(emptyErr.format('m_a'))
+    if len(m_b) == 0 or type(m_b[0]) is list and len(m_b[0]) == 0:
+        raise ValueError(emptyErr.format('m_b'))
+
+    s = -1
+
     for x in m_a:
-        if type(x) is not list:
-            raise TypeError("m_a must be a list of lists")
+        if type(x) is list:
+            if s == -1:
+                s = len(x)
+            else:
+                if s != len(x):
+                    raise TypeError(sizeErr.format('m_a'))
+            for y in x:
+                if not isinstance(y, (int, float)):
+                    raise TypeError(typeErr.format('m_a'))
+        else:
+            raise TypeError(typeErr.format('m_a'))
+
+    s = -1
+
     for x in m_b:
-        if type(x) is not list:
-            raise TypeError("m_b must be a list of lists")
-    if len(m_a) < 1:
-        raise ValueError("m_a can't be empty")
-    if len(m_b) < 1:
-        raise ValueError("m_b can't be empty")
-    arowlen = len(m_a[0])
-    if arowlen < 1:
-        raise ValueError("m_a can't be empty")
-    browlen = len(m_b[0])
-    if browlen < 1:
-        raise ValueError("m_b can't be empty")
-    for row in m_a:
-        if len(row) != arowlen:
-            raise TypeError("each row of m_a must should be of the same size")
-        for col in row:
-            if type(col) is not float and type(col) is not int:
-                raise TypeError("m_a should contain only integers or floats")
-    for row in m_b:
-        if len(row) != browlen:
-            raise TypeError("each row of m_b must should be of the same size")
-        for col in row:
-            if type(col) is not float and type(col) is not int:
-                raise TypeError("m_b should contain only integers or floats")
-    if arowlen != len(m_b):
-        raise ValueError("m_a and m_b can't be multiplied")
-    newmatrix = []
-    for x in range(len(m_a)):
-        newrow = []
-        for y in range(browlen):
-            sum = 0
-            for z in range(arowlen):
-                sum += m_a[x][z] * m_b[z][y]
-            newrow.append(sum)
-        newmatrix.append(newrow)
-    return newmatrix
+        if isinstance(x, list):
+            if s == -1:
+                s = len(x)
+            else:
+                if s != len(x):
+                    raise TypeError(sizeErr.format('m_b'))
+            for y in x:
+                if not isinstance(y, (int, float)):
+                    raise TypeError(typeErr.format('m_b'))
+        else:
+            raise TypeError(typeErr.format('m_b'))
+
+    if len(m_a[0]) != len(m_b):
+        raise ValueError('m_a and m_b can\'t be multiplied')
+
+    final = [[0 for a in m_b[0]] for x in m_a]
+    for i in range(len(m_a)):
+        for n in range(len(m_b[0])):
+            for k in range(len(m_b)):
+                final[i][n] += m_a[i][k] * m_b[k][n]
+
+    return final
