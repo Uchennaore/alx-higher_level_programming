@@ -1,17 +1,10 @@
 #!/usr/bin/python3
-"""
-This file contains functiom
-that returns the number of lines
-of a text file
-"""
+"""Defines a function that prints number of lines in a UTF8 text file"""
 
 
 def number_of_lines(filename=""):
-    """
-    function returns number of lines
-    """
-    i = 0
-    with open(filename, encoding="utf-8") as myFile:
-        for line in myFile:
-            i += 1
-    return (i)
+    with open(filename, "r") as f:
+        lines = 0
+        for line in f:
+            lines += 1
+        return lines
