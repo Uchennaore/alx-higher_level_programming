@@ -1,19 +1,14 @@
 #!/usr/bin/python3
 """
-This file contains functions that
-reads n lines of a txt file and prints
-it to stdout
+Appending a string at the end of a text file in UTF-8 format
+and returning the number of characters added.
 """
 
 
-def read_lines(filename="", nb_lines=0):
+def append_write(filename="", text=""):
     """
-    function that reads n lines
+    Appending the text at the end of the file while returning
+    the character count of what was added.
     """
-    i = 0
-    with open(filename, encoding="utf-8") as myFile:
-        for line in myFile:
-            i += 1
-            print(line, end="")
-            if nb_lines == i:
-                break
+    with open(filename, mode="a", encoding="UTF-8") as my_file:
+        return my_file.write(text)
