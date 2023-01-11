@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-"""Defines a function that prints number of lines in a UTF8 text file"""
+"""
+Reading n lines of a text file in UTF-8 format and printing to standard out.
+"""
 
 
-def number_of_lines(filename=""):
-    with open(filename, "r") as f:
-        lines = 0
-        for line in f:
-            lines += 1
-        return lines
+def write_file(filename="", text=""):
+    """
+    Opening a text file in UTF-8 format and writing in the file.
+    Opening the file in read mode and returning the number of characters.
+    """
+    with open(filename, mode="w", encoding="UTF-8") as my_file:
+        return (my_file.write(text))
