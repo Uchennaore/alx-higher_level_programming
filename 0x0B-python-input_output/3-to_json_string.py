@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 """
-This file contains function that
-writes a string to text file and returns
-number of characters written
+Returning the JSON representation of a string object.
 """
+import json
 
 
-def write_file(filename="", text=""):
+def to_json_string(my_obj):
+
     """
-    function to write to files
+    json.dumps: Serialize obj to a JSON formatted str using a conversion table.
     """
-    with open(filename, mode="w", encoding="utf-8") as myFile:
-        return (myFile.write(str(text)))
+    return (json.dumps(my_obj))
