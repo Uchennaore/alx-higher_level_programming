@@ -1,15 +1,15 @@
 #!/usr/bin/python3
+"""
+Creating an object from a JSON file.
+"""
 import json
-"""
-This file contains a function that
-returns an object represented by a
-JSON string
-"""
 
 
-def from_json_string(my_str):
+def load_from_json_file(filename):
     """
-    function to return object
-    represented by a JSON string
+    open the file in read only and UTF-8 format.
+    json.load: Deserializes the file to a
+    Python object using a conversion table.
     """
-    return (json.loads(my_str))
+    with open(filename, 'r', encoding="UTF-8") as my_file:
+        return(json.load(my_file))
