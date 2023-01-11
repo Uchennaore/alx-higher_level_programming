@@ -1,29 +1,21 @@
 #!/usr/bin/python3
 """
-This module creates a student class
-with public attributes and retrives
-json dictionary rep
+This file defines a function
+that creates a pascals triangle
 """
 
 
-class Student:
+def pascal_triangle(n):
     """
-    student class with public instances
+    function defining the logic to
+    create pascal's triangle
     """
-    def __init__(self, first_name, last_name, age):
-        """
-        instantiation of attr
-        """
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
-
-    def to_json(self, attrs=None):
-        """
-        function returns dict repres
-        of instance
-        """
-        if attrs is None:
-            return (self.__dict__)
-        return ({key: value for key, value in self.__dict__.items()
-                 if key in attrs})
+    if n <= 0:
+        return ([])
+    if n == 1:
+        return [[1]]
+    pascal = [[1]]
+    for i in range(n - 1):
+        pascal.append([x + n for x, n in zip(pascal[-1] + [0],
+                                             [0] + pascal[-1])])
+    return (pascal)
