@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-import json
 """
-This file contains a function
-that creates an object from a "JSON FILE"
+This file defines a function that
+returns the dictionary descp with
+simple data structure for json
+serialization of obj
 """
 
 
-def load_from_json_file(filename):
+def class_to_json(obj):
     """
-    function that creates obj from json file
+    function that returns dict descp
     """
-    with open(filename) as myFile:
-        new_obj = json.load(myFile)
-    return (new_obj)
+    return (obj.__dict__)
