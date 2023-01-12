@@ -11,7 +11,7 @@ try:
         if line[-2] in codes:
             codes[line[-2]] += 1
         else:
-            codes[line[-2] = 1
+            codes[line[-2]] = 1
         totalsize += int(line[-1])
         linesread += 1
         if linesread % 10 == 0:
