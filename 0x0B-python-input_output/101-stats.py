@@ -9,9 +9,9 @@ try:
     for line in sys.stdin:
         line = line.split(" ")
         if line[-2] in codes:
-            codes[line[-2]] += 1
+            codes[line[-1]] += 1
         else:
-            codes[line[-2]] = 1
+            codes[line[-1]] = 1
         totalsize += int(line[-1])
         linesread += 1
         if linesread % 10 == 0:
