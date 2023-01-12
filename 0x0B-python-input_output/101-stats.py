@@ -8,7 +8,7 @@ linesread = 0
 try:
     for line in sys.stdin:
         line = line.split(" ")
-        if line[-1] in codes:
+        if line[-2] in codes:
             codes[line[-2]] += 1
         else:
             codes[line[-2] = 1
