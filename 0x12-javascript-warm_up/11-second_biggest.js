@@ -1,6 +1,10 @@
 #!/usr/bin/node
+
 if (process.argv.length < 4) {
   console.log(0);
 } else {
-  console.log(process.argv.splice(2, process.argv.length - 1).sort().reverse()[1]);
+  const ins = process.argv.slice(2);
+  const nums = ins.map(Number);
+  const sorted = nums.sort(function (a, b) { return b - a; });
+  console.log(sorted[1]);
 }
