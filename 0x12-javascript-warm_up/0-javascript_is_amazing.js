@@ -1,4 +1,4 @@
 #!/usr/bin/node
-let myPar = 'Javascript is amazing';
+let myVar = 'Javascript is amazing';
 // function to print myVar
-console.log(myPar);
+console.log(myVar);
