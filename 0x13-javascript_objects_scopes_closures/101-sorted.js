@@ -1,13 +1,13 @@
 #!/usr/bin/node
 
-let dict = require('./101-data').dict;
+const { dict } = require('./101-data');
 
-let newdict = {};
-for (let uid in dict) {
-  if (newdict[dict[uid]] === undefined) {
-    newdict[dict[uid]] = [];
-  }
-  newdict[dict[uid]].push(uid);
-}
+const convertedArr = Object.entries(dict);
 
-console.log(newdict);
+const newObj = {};
+
+convertedArr.forEach(element => {
+  newObj[element[1]] ? newObj[element[1]].push(element[0]) : newObj[element[1]] = [element[0]];
+});
+
+console.log(newObj);
