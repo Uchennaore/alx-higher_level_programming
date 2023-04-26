@@ -1,8 +1,9 @@
 #!/usr/bin/node
+
 const request = require('request');
-request.get('http://swapi.co/api/films/' + process.argv[2] + '/', function (err, response, body) {
-  if (err) throw err;
-  else if (response.statusCode === 200) {
-    console.log(JSON.parse(body).title);
-  }
+const starWarsUri = 'https://swapi-api.hbtn.io/api/films/'.concat(process.argv[2]);
+
+request(starWarsUri, function (_err, _res, body) {
+  body = JSON.parse(body);
+  console.log(body.title);
 });
